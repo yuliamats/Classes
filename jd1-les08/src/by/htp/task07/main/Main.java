@@ -17,6 +17,7 @@ public class Main {
 
 		TryangleLogic logic = new TryangleLogic();
 		square = logic.square(tr);
+		
 		if(logic.isTryangleExisted(square) == true) {
 			System.out.println("площадь треугольника равна " + square);
 			perimeter = logic.perimeter(tr);
