@@ -6,13 +6,13 @@ public class Customer {
 	private String name;
 	private String patrName;
 	private long creditCardNumber;
-	private long accountNumber;
+	private String accountNumber;
 
 	public Customer() {
 
 	}
 
-	public Customer(int id, String surname, String name, String patrName, long creditCardNumber, long accountNumber) {
+	public Customer(int id, String surname, String name, String patrName, long creditCardNumber, String accountNumber) {
 		super();
 		this.id = id;
 		this.surname = surname;
@@ -62,11 +62,11 @@ public class Customer {
 		this.creditCardNumber = creditCardNumber;
 	}
 
-	public long getAccountNumber() {
+	public String getAccountNumber() {
 		return accountNumber;
 	}
 
-	public void setAccountNumber(long accountNumber) {
+	public void setAccountNumber(String accountNumber) {
 		this.accountNumber = accountNumber;
 	}
 
@@ -74,7 +74,7 @@ public class Customer {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (accountNumber ^ (accountNumber >>> 32));
+		result = prime * result + ((accountNumber == null) ? 0 : accountNumber.hashCode());
 		result = prime * result + (int) (creditCardNumber ^ (creditCardNumber >>> 32));
 		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -92,7 +92,10 @@ public class Customer {
 		if (getClass() != obj.getClass())
 			return false;
 		Customer other = (Customer) obj;
-		if (accountNumber != other.accountNumber)
+		if (accountNumber == null) {
+			if (other.accountNumber != null)
+				return false;
+		} else if (!accountNumber.equals(other.accountNumber))
 			return false;
 		if (creditCardNumber != other.creditCardNumber)
 			return false;
@@ -122,4 +125,5 @@ public class Customer {
 				+ ", creditCardNumber=" + creditCardNumber + ", accountNumber=" + accountNumber + "]";
 	}
 
+	
 }

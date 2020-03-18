@@ -13,7 +13,6 @@ import by.htp.les09.task03.view.CountryView;
 // центры
 
 public class Main {
-
 	public static void main(String[] args) {
 		District d1 = new District("Брестский район");
 		d1.addTown(new Town("Брест", Status.CAPITALCITY, 146.12));
@@ -45,8 +44,8 @@ public class Main {
 
 		System.out.println("столица " + cLogic.findCapital(country).getName());
 		System.out.println("количество областей " + cLogic.calcNumOfRegion(country));
-		System.out.println("общая площадь " + cLogic.calcTotalSquare(country));
 
+		CountryView cView = new CountryView();
+		cView.printCapitalCities(cLogic.findCapitalCity(country));
 	}
-
 }
